@@ -22,7 +22,7 @@ class ExplanationAgent:
         """
         self.api_key = api_key or os.getenv("GROQ_API_KEY")
         self.client = Groq(api_key=self.api_key)
-        self.model = "deepseek-r1-distill-llama-70b"
+        self.model = "llama-3.3-70b-versatile"
     
     def generate_response(self, question: str, retrieved_chunks: List[Dict],
                          policy_types_queried: List[str], scenario_details: Dict = None) -> Dict:
