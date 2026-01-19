@@ -200,7 +200,7 @@ Click on expanders to see:
 
 Edit `agents/explanation_agent.py` line 25:
 ```python
-self.model = "deepseek-r1-distill-llama-70b"  # Change to any Groq model
+self.model = "llama-3.3-70b-versatile"  # Change to any Groq model
 ```
 
 ### Adjusting Tone
