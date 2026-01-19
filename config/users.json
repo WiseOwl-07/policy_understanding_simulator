@@ -1,0 +1,24 @@
+{
+  "alice": {
+    "name": "Alice Johnson",
+    "policies": {
+      "auto": "auto_policy_1.md"
+    },
+    "description": "Auto Insurance Only (Standard Coverage)"
+  },
+  "bob": {
+    "name": "Bob Williams",
+    "policies": {
+      "property": "property_policy_1.md"
+    },
+    "description": "Property Insurance Only (Basic Coverage)"
+  },
+  "carol": {
+    "name": "Carol Martinez",
+    "policies": {
+      "auto": "auto_policy_2.md",
+      "property": "property_policy_2.md"
+    },
+    "description": "Both Auto & Property (Premium Coverage)"
+  }
+}
