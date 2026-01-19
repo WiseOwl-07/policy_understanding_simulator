@@ -35,7 +35,7 @@ class ScenarioClassifier:
                 - confidence: "high", "medium", or "low"
                 - reasoning: Explanation of classification
         """
-        prompt = f"""You are an insurance policy classifier. Analyze the following coverage question and determine if it relates to AUTO insurance, PROPERTY (home) insurance, or if it's AMBIGUOUS (could be either).
+        prompt = f"""You are an insurance policy classifier. Analyze the following coverage question and determine if it relates to AUTO insurance, PROPERTY (home) insurance, BOTH policies, or if it's AMBIGUOUS (unclear which).
 
 Question: "{question}"
 
@@ -51,14 +51,19 @@ PROPERTY insurance typically covers:
 - Property structures (roof, walls, foundation)
 - Personal belongings inside home
 
-AMBIGUOUS scenarios might include:
+BOTH - User explicitly wants information about all their policies:
+- Questions containing "all my policies", "any of my policies", "across all policies"
+- Questions asking "which policy covers" or "is this covered in any policy"
+- User wants comprehensive coverage information from both auto and property
+
+AMBIGUOUS - Unclear which specific policy (but not explicitly asking about both):
 - Generic terms like "fire" or "theft" without specifying what/where
 - "Water damage" without context
-- Scenarios that could affect both (e.g., "garage" could be part of home OR where car is parked)
+- Scenarios that could affect both but user hasn't indicated they want info on both
 
 Respond in this exact JSON format:
 {{
-    "classification": "auto" OR "property" OR "ambiguous",
+    "classification": "auto" OR "property" OR "both" OR "ambiguous",
     "confidence": "high" OR "medium" OR "low",
     "reasoning": "Brief explanation of why this classification was chosen"
 }}

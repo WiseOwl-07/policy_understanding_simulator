@@ -149,18 +149,33 @@ Instructions:
 7. DO NOT use any emojis, symbols, or bullet points in the explanation
 8. Write the explanation as flowing paragraph text that sounds like a helpful insurance agent explaining things
 
+IMPORTANT - When analyzing MULTIPLE policy types (Auto AND Property):
+- If BOTH policies EXPLICITLY COVER the scenario (even with deductibles) → answer "Yes"
+  * Deductibles, waiting periods, and limits DON'T make it "It depends"
+  * Example: "Both your auto and property policies cover storm damage - your auto under Comprehensive Coverage and property under Dwelling Coverage, each subject to their respective deductibles."
+- If BOTH policies EXPLICITLY EXCLUDE the scenario → answer "No"
+  * Example: "Storm damage is explicitly excluded in both your auto and property policies."
+- If one policy COVERS and the other EXCLUDES → answer "It depends"
+  * Example: "For your property policy, storm damage is covered under Dwelling Coverage. However, your auto policy explicitly excludes storm damage from comprehensive coverage."
+- If the scenario is UNCLEAR or AMBIGUOUS for either/both policies → answer "It depends"
+  * Example: "Storm coverage depends on the specific circumstances and type of storm damage for both policies."
+
 Respond in this exact JSON format:
 {{
     "coverage_result": "Yes" OR "No" OR "It depends",
-    "explanation": "A clear, semi-formal friendly explanation. Example: I've reviewed your auto insurance policy, and unfortunately it doesn't provide coverage for a house fire. The policy excerpts we're looking at focus specifically on vehicle-related coverage - sections like Part D Physical Damage Coverage address damage to your car, not homeowner's insurance. While your policy does include Comprehensive Coverage for fires and explosions, this applies only to your vehicle, not your home. To protect your house against fire damage, you would need a separate homeowner's insurance policy."
+    "explanation": "A clear, semi-formal friendly explanation."
 }}
 
 IMPORTANT: 
 - Base your answer ONLY on the provided policy excerpts
 - Do not make assumptions about coverage not mentioned in the excerpts
-- If the policy explicitly excludes something, say "No"
-- If the policy explicitly covers something, say "Yes"
-- Use "It depends" when coverage is conditional or unclear
+- Deductibles, limits, and standard conditions DO NOT change YES to IT DEPENDS
+- If BOTH policies explicitly cover something (even with deductibles), say "Yes"
+- If BOTH policies explicitly exclude something, say "No"
+- Use "It depends" ONLY when:
+  * Coverage explicitly differs between policies (one covers, one excludes)
+  * The scenario is genuinely unclear or ambiguous in the policy language
+  * There are conflicting conditions that make coverage uncertain
 - Maintain a semi-formal friendly tone - professional but warm and approachable
 - Use some contractions naturally (doesn't, you'll, won't) but maintain professionalism
 - NO emojis, NO symbols, NO bullet points - write as a flowing paragraph
