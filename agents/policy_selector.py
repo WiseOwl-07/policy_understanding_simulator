@@ -92,6 +92,15 @@ class PolicySelector:
                     "classification": classification
                 }
         
+        # User explicitly asked about all policies (e.g., "any of my policies")
+        elif scenario_type == "both":
+            return {
+                "policies_to_query": available_types,  # Query all available policies
+                "needs_clarification": False,
+                "clarification_question": None,
+                "classification": classification
+            }
+        
         # Ambiguous classification - ask for clarification
         else:
             clarification_q = self._generate_clarification_question(

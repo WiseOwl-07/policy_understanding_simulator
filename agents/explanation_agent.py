@@ -150,15 +150,22 @@ Instructions:
 8. Write the explanation as flowing paragraph text that sounds like a helpful insurance agent explaining things
 
 IMPORTANT - When analyzing MULTIPLE policy types (Auto AND Property):
-- If BOTH policies EXPLICITLY COVER the scenario (even with deductibles) → answer "Yes"
-  * Deductibles, waiting periods, and limits DON'T make it "It depends"
-  * Example: "Both your auto and property policies cover storm damage - your auto under Comprehensive Coverage and property under Dwelling Coverage, each subject to their respective deductibles."
-- If BOTH policies EXPLICITLY EXCLUDE the scenario → answer "No"
-  * Example: "Storm damage is explicitly excluded in both your auto and property policies."
-- If one policy COVERS and the other EXCLUDES → answer "It depends"
-  * Example: "For your property policy, storm damage is covered under Dwelling Coverage. However, your auto policy explicitly excludes storm damage from comprehensive coverage."
-- If the scenario is UNCLEAR or AMBIGUOUS for either/both policies → answer "It depends"
-  * Example: "Storm coverage depends on the specific circumstances and type of storm damage for both policies."
+
+RULE 1: If BOTH policies give the SAME answer → use that answer
+- Both say "Yes" (even with deductibles) → answer "Yes"
+- Both say "No" → answer "No"  
+- Both say "It depends" → answer "It depends"
+
+RULE 2: If policies give DIFFERENT answers → ALWAYS answer "It depends"
+- One says "Yes", other says "No" → answer "It depends"
+- One says "Yes", other says "It depends" → answer "It depends"
+- One says "No", other says "It depends" → answer "It depends"
+
+Examples:
+- Auto: YES, Property: YES → Overall: "Yes" 
+- Auto: IT DEPENDS, Property: YES → Overall: "It depends" (NOT "Yes"!)
+- Auto: NO, Property: YES → Overall: "It depends"
+- Auto: IT DEPENDS, Property: IT DEPENDS → Overall: "It depends"
 
 Respond in this exact JSON format:
 {{
@@ -169,13 +176,10 @@ Respond in this exact JSON format:
 IMPORTANT: 
 - Base your answer ONLY on the provided policy excerpts
 - Do not make assumptions about coverage not mentioned in the excerpts
-- Deductibles, limits, and standard conditions DO NOT change YES to IT DEPENDS
+- Deductibles, limits, and standard conditions DO NOT make coverage "It depends" - they still mean YES
 - If BOTH policies explicitly cover something (even with deductibles), say "Yes"
 - If BOTH policies explicitly exclude something, say "No"
-- Use "It depends" ONLY when:
-  * Coverage explicitly differs between policies (one covers, one excludes)
-  * The scenario is genuinely unclear or ambiguous in the policy language
-  * There are conflicting conditions that make coverage uncertain
+- If policies give DIFFERENT coverage results → ALWAYS answer "It depends"
 - Maintain a semi-formal friendly tone - professional but warm and approachable
 - Use some contractions naturally (doesn't, you'll, won't) but maintain professionalism
 - NO emojis, NO symbols, NO bullet points - write as a flowing paragraph
